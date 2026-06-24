@@ -3,10 +3,9 @@
 A small Streamlit app for turning a monday.com inventory export into a DLUXCA cart
 URL.
 
-The app lets you upload one `.xlsx` file, finds the DLUXCA rows that need to be
-reordered, calculates the quantity needed, and generates a cart URL that can be
-opened in the browser. It also shows any skipped items so they can be reviewed
-manually.
+The app lets you upload one `.xlsx` file, finds rows that need to be reordered,
+calculates the quantity needed, and generates a DLUXCA cart URL that can be
+opened in the browser. It also groups manual review orders by store.
 
 ## Run The App
 
@@ -30,7 +29,7 @@ http://localhost:8501
 2. Upload that file in the app.
 3. Click `Generate cart URL`.
 4. Open the generated DLUXCA cart URL.
-5. Review the skipped orders table and add those items manually if needed.
+5. Review the manual review sections and add those items manually if needed.
 
 ## Quantity Logic
 
@@ -48,21 +47,21 @@ Rows with a quantity of `0` or less are ignored.
 
 The app currently generates cart URLs for DLUXCA only.
 
-Rows for other supplier websites are ignored by the cart URL generator. The app
-does not log into DLUXCA or bypass Cloudflare; it uses Shopify product data and a
-cart URL instead.
+Rows for other supplier websites are shown in the manual review area, grouped by
+store. The app does not log into DLUXCA or bypass Cloudflare; it uses Shopify
+product data and a cart URL instead.
 
-## Skipped Orders
+## Manual Review Orders
 
-An item can be skipped when the app cannot safely determine the exact DLUXCA
-variant to order, or when the selected variant appears unavailable.
+Manual review includes DLUXCA rows that could not be safely added to the cart URL
+and reorder rows from other supplier stores.
 
-Skipped rows show:
+Manual review rows show:
 
 - SKU
 - Name
 - Quantity needed
 - Product URL
-- Reason skipped
+- Reason skipped, for DLUXCA skipped rows
 
 Those should be checked manually before placing the final order.
