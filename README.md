@@ -1,4 +1,4 @@
-# Ciara Ordering App
+# Jewelry Ordering App
 
 A small Streamlit app for turning a monday.com inventory export into a DLUXCA cart
 URL.
